@@ -2,6 +2,7 @@
   "name": "visa-wizard",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@10.30.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
