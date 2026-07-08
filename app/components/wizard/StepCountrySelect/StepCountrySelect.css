@@ -1,0 +1,38 @@
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.step-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.step-subtitle {
+  margin-top: -var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--space-2);
+}
+
+.card-fade-enter-active,
+.card-fade-leave-active {
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.card-fade-enter-from,
+.card-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}

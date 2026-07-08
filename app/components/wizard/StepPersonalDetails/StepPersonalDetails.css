@@ -1,0 +1,49 @@
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.step-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.step-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: -var(--space-4);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.phone-wrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.calling-code {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text);
+  font-size: var(--text-base);
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.phone-input.has-prefix {
+  padding-left: 52px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+}

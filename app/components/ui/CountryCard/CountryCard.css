@@ -1,0 +1,70 @@
+.country-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-top: var(--space-3);
+}
+
+.flag-wrap {
+  flex-shrink: 0;
+}
+
+.flag-img {
+  width: 56px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  box-shadow: var(--shadow-sm);
+}
+
+.flag-emoji {
+  font-size: 40px;
+  line-height: 1;
+  display: block;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.capital {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Full variant */
+.full .flag-img {
+  width: 72px;
+  height: 48px;
+}
+
+.meta-row {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: 4px;
+  font-size: var(--text-sm);
+}
+
+.meta-label {
+  color: var(--color-text-muted);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.meta-value {
+  color: var(--color-text);
+  font-weight: 500;
+}

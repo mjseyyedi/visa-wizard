@@ -1,0 +1,19 @@
+.wizard-card {
+  padding: var(--space-8);
+}
+
+.wizard-header {
+  margin-bottom: var(--space-8);
+}
+
+.app-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.app-subtitle {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}

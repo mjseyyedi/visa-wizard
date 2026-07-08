@@ -1,0 +1,36 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border: none;
+  cursor: default;
+  font-family: inherit;
+}
+
+button.badge {
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+button.badge:hover {
+  opacity: 0.8;
+}
+
+.pending {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.approved {
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.rejected {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}

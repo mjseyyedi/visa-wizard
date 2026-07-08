@@ -1,0 +1,75 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: var(--space-8);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.step.clickable {
+  cursor: pointer;
+}
+
+.step.clickable:hover .circle {
+  background: var(--color-primary-hover);
+}
+
+.circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border: 2px solid var(--color-step-pending);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  transition: all var(--transition);
+}
+
+.step.active .circle {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.step.done .circle {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.step.active .label,
+.step.done .label {
+  color: var(--color-primary);
+}
+
+.connector {
+  flex: 1;
+  height: 2px;
+  background: var(--color-border);
+  margin-bottom: 18px;
+  transition: background var(--transition);
+}
+
+.connector.done {
+  background: var(--color-primary);
+}
