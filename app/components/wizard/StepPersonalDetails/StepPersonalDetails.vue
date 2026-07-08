@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStepPersonalDetails } from './useStepPersonalDetails'
 
-const { store, callingCode, errors, validateField, next } = useStepPersonalDetails()
+const { store, citizenshipCountry, callingCode, errors, validateField, next } = useStepPersonalDetails()
 </script>
 
 <template>
@@ -45,10 +45,19 @@ const { store, callingCode, errors, validateField, next } = useStepPersonalDetai
         <div class="form-field">
           <label class="form-label">Phone Number</label>
           <div class="phone-wrap">
-            <span v-if="callingCode" class="calling-code">{{ callingCode }}</span>
+            <span v-if="citizenshipCountry" class="calling-code">
+              <img
+                v-if="citizenshipCountry.flagUrl"
+                :src="citizenshipCountry.flagUrl"
+                :alt="`${citizenshipCountry.name} flag`"
+                class="calling-code-flag"
+              />
+              <span v-else class="calling-code-emoji">{{ citizenshipCountry.flagEmoji }}</span>
+              <span v-if="callingCode">{{ callingCode }}</span>
+            </span>
             <input
               class="form-input phone-input"
-              :class="{ 'has-error': errors.phone, 'has-prefix': !!callingCode }"
+              :class="{ 'has-error': errors.phone, 'has-prefix': !!citizenshipCountry }"
               type="tel"
               placeholder="Phone number"
               :value="store.form.phone"

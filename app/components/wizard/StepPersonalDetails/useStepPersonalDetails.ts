@@ -3,6 +3,7 @@ import { rules, useValidation } from '~/composables/useValidation'
 export function useStepPersonalDetails() {
   const store = useWizardStore()
 
+  const citizenshipCountry = computed(() => store.form.citizenshipCountry)
   const callingCode = computed(() => store.form.citizenshipCountry?.callingCode ?? '')
 
   const { errors, validateField, validateAll } = useValidation(
@@ -26,5 +27,5 @@ export function useStepPersonalDetails() {
     if (validateAll()) store.nextStep()
   }
 
-  return { store, callingCode, errors, validateField, next }
+  return { store, citizenshipCountry, callingCode, errors, validateField, next }
 }

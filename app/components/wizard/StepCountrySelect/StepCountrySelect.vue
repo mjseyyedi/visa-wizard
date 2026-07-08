@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStepCountrySelect } from './useStepCountrySelect'
 
-const { store, citizenshipError, destinationError, next } = useStepCountrySelect()
+const { store, citizenshipError, destinationError, bothSelected, next } = useStepCountrySelect()
 </script>
 
 <template>
@@ -20,7 +20,10 @@ const { store, citizenshipError, destinationError, next } = useStepCountrySelect
           @update:model-value="store.setCitizenshipCountry($event)"
         />
         <Transition name="card-fade">
-          <UiCountryCard v-if="store.form.citizenshipCountry" :country="store.form.citizenshipCountry" />
+          <UiCountryCard
+            v-if="store.form.citizenshipCountry && !bothSelected"
+            :country="store.form.citizenshipCountry"
+          />
         </Transition>
       </div>
 
@@ -34,10 +37,21 @@ const { store, citizenshipError, destinationError, next } = useStepCountrySelect
           @update:model-value="store.setDestinationCountry($event)"
         />
         <Transition name="card-fade">
-          <UiCountryCard v-if="store.form.destinationCountry" :country="store.form.destinationCountry" />
+          <UiCountryCard
+            v-if="store.form.destinationCountry && !bothSelected"
+            :country="store.form.destinationCountry"
+          />
         </Transition>
       </div>
     </div>
+
+    <Transition name="card-fade">
+      <UiRouteValidatedCard
+        v-if="bothSelected"
+        :citizenship-country="store.form.citizenshipCountry!"
+        :destination-country="store.form.destinationCountry!"
+      />
+    </Transition>
 
     <div class="actions">
       <button class="btn btn-primary" @click="next">

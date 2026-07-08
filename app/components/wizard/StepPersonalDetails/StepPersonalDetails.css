@@ -30,6 +30,9 @@
 .calling-code {
   position: absolute;
   left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--color-text);
   font-size: var(--text-base);
   font-weight: 500;
@@ -38,8 +41,23 @@
   white-space: nowrap;
 }
 
+.calling-code-flag {
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+}
+
+.calling-code-emoji {
+  font-size: 15px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 .phone-input.has-prefix {
-  padding-left: 52px;
+  padding-left: 88px;
 }
 
 .actions {

@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import type { Country } from '~/types'
-import { useCountryCard } from './useCountryCard'
 
 defineProps<{
   country: Country
   variant?: 'compact' | 'full'
+  label?: string
 }>()
-
-const { formatPopulation } = useCountryCard()
 </script>
 
 <template>
@@ -24,30 +22,12 @@ const { formatPopulation } = useCountryCard()
     </div>
 
     <div class="info">
+      <div v-if="variant === 'full' && label" class="review-label">{{ label }}</div>
       <div class="name">{{ country.name }}</div>
-
-      <template v-if="variant === 'full'">
-        <div class="meta-row">
-          <span class="meta-label">Capital</span>
-          <span class="meta-value">{{ country.capital || '—' }}</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Region</span>
-          <span class="meta-value">{{ country.region || '—' }}</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Population</span>
-          <span class="meta-value">{{ formatPopulation(country.population) }}</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Languages</span>
-          <span class="meta-value">{{ country.languages.join(', ') || '—' }}</span>
-        </div>
-      </template>
-
-      <template v-else>
-        <div class="capital">{{ country.capital || '—' }}</div>
-      </template>
+      <div v-if="variant === 'full'" class="summary">
+        Pop: {{ country.population.toLocaleString('en-US') }} • {{ country.region || '—' }}
+      </div>
+      <div v-else class="capital">{{ country.capital || '—' }}</div>
     </div>
   </div>
 </template>

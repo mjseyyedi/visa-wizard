@@ -4,6 +4,10 @@ export function useStepCountrySelect() {
   const citizenshipError = ref<string | null>(null)
   const destinationError = ref<string | null>(null)
 
+  const bothSelected = computed(
+    () => !!store.form.citizenshipCountry && !!store.form.destinationCountry,
+  )
+
   function validate(): boolean {
     let valid = true
     if (!store.form.citizenshipCountry) {
@@ -25,5 +29,5 @@ export function useStepCountrySelect() {
     if (validate()) store.nextStep()
   }
 
-  return { store, citizenshipError, destinationError, next }
+  return { store, citizenshipError, destinationError, bothSelected, next }
 }
