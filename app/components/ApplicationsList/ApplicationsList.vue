@@ -7,9 +7,9 @@ const { store, formatDate } = useApplicationsList()
 <template>
   <section class="list-section card">
     <div class="list-header">
-      <h2 class="section-title">Submitted Applications</h2>
-      <span v-if="store.applications.length > 0" class="count-badge">
-        {{ store.applications.length }}
+      <h2 class="section-title">Recent Submissions</h2>
+      <span v-if="store.applications.length > 0" class="count-text">
+        {{ store.applications.length }} Records
       </span>
     </div>
 
@@ -21,56 +21,48 @@ const { store, formatDate } = useApplicationsList()
       <p>No applications yet. Complete the wizard above to submit your first one.</p>
     </div>
 
-    <div v-else class="table-wrap">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Citizenship</th>
-            <th>Destination</th>
-            <th>Applicant</th>
-            <th>Submitted</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <TransitionGroup name="list" tag="tbody">
-          <tr v-for="app in store.applications" :key="app.id">
-            <td>
-              <div class="country-cell">
-                <img
-                  v-if="app.citizenshipCountry.flagUrl"
-                  :src="app.citizenshipCountry.flagUrl"
-                  :alt="app.citizenshipCountry.name"
-                  class="flag-sm"
-                />
-                <span v-else class="emoji-sm">{{ app.citizenshipCountry.flagEmoji }}</span>
-                <span>{{ app.citizenshipCountry.name }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="country-cell">
-                <img
-                  v-if="app.destinationCountry.flagUrl"
-                  :src="app.destinationCountry.flagUrl"
-                  :alt="app.destinationCountry.name"
-                  class="flag-sm"
-                />
-                <span v-else class="emoji-sm">{{ app.destinationCountry.flagEmoji }}</span>
-                <span>{{ app.destinationCountry.name }}</span>
-              </div>
-            </td>
-            <td class="applicant">{{ app.applicantName }}</td>
-            <td class="date">{{ formatDate(app.submittedAt) }}</td>
-            <td>
-              <UiStatusBadge
-                :status="app.status"
-                :clickable="true"
-                @click="store.cycleStatus(app.id)"
-              />
-            </td>
-          </tr>
-        </TransitionGroup>
-      </table>
-    </div>
+    <TransitionGroup v-else name="list" tag="div" class="app-list">
+      <div v-for="app in store.applications" :key="app.id" class="app-card">
+        <div class="flag-stack">
+          <span class="flag-coin">
+            <img
+              v-if="app.citizenshipCountry.flagUrl"
+              :src="app.citizenshipCountry.flagUrl"
+              :alt="app.citizenshipCountry.name"
+            />
+            <span v-else class="flag-emoji">{{ app.citizenshipCountry.flagEmoji }}</span>
+          </span>
+          <span class="flag-coin second">
+            <img
+              v-if="app.destinationCountry.flagUrl"
+              :src="app.destinationCountry.flagUrl"
+              :alt="app.destinationCountry.name"
+            />
+            <span v-else class="flag-emoji">{{ app.destinationCountry.flagEmoji }}</span>
+          </span>
+        </div>
+
+        <div class="route-info">
+          <div class="applicant">{{ app.applicantName }}</div>
+          <div class="route">
+            <span>{{ app.citizenshipCountry.name }}</span>
+            <span class="arrow">→</span>
+            <span>{{ app.destinationCountry.name }}</span>
+          </div>
+        </div>
+
+        <div class="submitted-info">
+          <div class="submitted-label">Submitted</div>
+          <div class="submitted-date">{{ formatDate(app.submittedAt) }}</div>
+        </div>
+
+        <UiStatusBadge
+          :status="app.status"
+          :clickable="true"
+          @click="store.cycleStatus(app.id)"
+        />
+      </div>
+    </TransitionGroup>
   </section>
 </template>
 

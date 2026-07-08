@@ -1,52 +1,36 @@
 .stepper {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: var(--space-8);
+  gap: var(--space-3);
+  margin: calc(-1 * var(--space-8)) calc(-1 * var(--space-8)) var(--space-8);
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-stepper-bg);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .step {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: var(--space-2);
   flex-shrink: 0;
+  opacity: 0.4;
+  transition: opacity var(--transition);
+}
+
+.step.active,
+.step.done {
+  opacity: 1;
 }
 
 .step.clickable {
   cursor: pointer;
 }
 
-.step.clickable:hover .circle {
-  background: var(--color-primary-hover);
-}
-
-.circle {
+.step-icon {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-sm);
-  font-weight: 700;
-  border: 2px solid var(--color-step-pending);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
-  transition: all var(--transition);
-}
-
-.step.active .circle {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-}
-
-.step.done .circle {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
+  flex-shrink: 0;
 }
 
 .label {
@@ -64,12 +48,11 @@
 
 .connector {
   flex: 1;
-  height: 2px;
-  background: var(--color-border);
-  margin-bottom: 18px;
-  transition: background var(--transition);
+  height: 0;
+  border-top: 2px dashed var(--color-border);
+  transition: border-color var(--transition);
 }
 
 .connector.done {
-  background: var(--color-primary);
+  border-color: var(--color-primary);
 }

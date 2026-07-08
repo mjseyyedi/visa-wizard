@@ -23,12 +23,7 @@ const { steps } = useWizardStepper()
         }"
         @click="currentStep > step.number ? emit('goToStep', step.number) : undefined"
       >
-        <div class="circle">
-          <svg v-if="currentStep > step.number" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <span v-else>{{ step.number }}</span>
-        </div>
+        <img :src="step.icon" :alt="step.label" class="step-icon" />
         <span class="label">{{ step.label }}</span>
       </div>
 

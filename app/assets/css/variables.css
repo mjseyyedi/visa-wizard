@@ -25,6 +25,7 @@
   --color-step-done: #2563eb;
   --color-step-active: #2563eb;
   --color-step-pending: #cbd5e1;
+  --color-stepper-bg: #f1e9ff;
 
   /* Spacing */
   --space-1: 4px;
